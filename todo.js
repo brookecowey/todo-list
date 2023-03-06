@@ -43,9 +43,9 @@ orderedListElement.appendChild(listitem)
   }
   
   const filterTodos = () => {
-    const result = filterTodos;
     let filtered = []
-    for (let index = 0; index <arrayOfTodos.length; index++) {
+    const result = filtered;
+    for (let index =0; index <arrayOfTodos.length; index++) {
 const todo = arrayOfTodos[index];
 let userId = 2
 if (todo.userId === userId) {
@@ -54,9 +54,35 @@ if (todo.userId === userId) {
 
     }
     console.log('filtered', filtered)
+    document.getElementById("todo-list").innerHTML= ""
   }
 
+const inputTodos = () => {
+  const inputTodos = document.getElementById("userId").value
+  const x = Number(inputTodos)
+  console.log(x);
+  let filtered = []
+  for (let index =0; index <arrayOfTodos.length; index++) {
+    const todo = arrayOfTodos[index];
+    let userId = x
+    if (todo.userId === userId) {
+      filtered.push(todo)
+    } 
+  }
+  console.log("filtered", filtered)
+  document.getElementById("todo-list").innerHTML= "" //starting DOM 
+  let orderedListElement = document.querySelector('#todo-list')
 
+  for (let index = 0; index < filtered.length; index++) {
+
+const todo = filtered[index];
+
+const listitem = document.createElement('li')
+const text = document.createTextNode(todo.title)
+listitem.appendChild(text)
+orderedListElement.appendChild(listitem)
+}
+}
   // get OL by ID
   // loop through arrayOfTodos
     // create a list element
